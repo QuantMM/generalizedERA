@@ -2,44 +2,47 @@
 # Final Simulation Setups
 #---------------------
 library(partykit);library(strucchange);library(sandwich);library(mvtnorm)
-source("C:/Users/SUNMEE/Downloads/MBR Revision/ERAfunction_simulation.r")
+source("ERAfunction_simulation.r")
 lmfun <- function(y, x, start=NULL, weights=NULL, offset=NULL, ...){lm(y~0+x,...)} # for MOB
 
 #---------------------
 # Random ERA data generate: Becker, Rai, & Rigdon (2013)
 # "Predictive validity and formative measurement in structural equation modeling: Embracing practical relevance."
 #---------------------
-ncomp <- 2 								# num. of components
-r <- 0									# corr(F1,F2)
-B1 <- 0.3								# reg coeff for F1
-R2 <- 0.4								# R2 of endo- composite
+ncomp <- 2 							# num. of components
+r <- 0								# corr(F1,F2)
+B1 <- 0.3							# reg coeff for F1
+R2 <- 0.4							# R2 of endo- composite
 B2 <- 0.5568							# obtained reg coeff for F2 based on (R2, b1, r)
-corstr <- 1								# corr structure of predictors (1= nearby pair)
-npred <- 4 								# num. of predictors per comp
-corX <- 0								# corr among predictors
-w1 <- c(0.7, 0.6, 0.5, 0.4)				# initial (i.e., unstandardized) values for F1 weights
-w2 <- c(0.6, 0.5, 0.4, 0.3)				# initial values for F2 weights
+corstr <- 1							# corr structure of predictors (1= nearby pair)
+npred <- 4 							# num. of predictors per comp
+corX <- 0							# corr among predictors
+w1 <- c(0.7, 0.6, 0.5, 0.4)					# initial (i.e., unstandardized) values for F1 weights
+w2 <- c(0.6, 0.5, 0.4, 0.3)					# initial values for F2 weights
 Nvar <- npred*ncomp						# total num. of predictors
 nvar_t <- Nvar+1						# total num. of observed variables
 
-homo <- 1			 					# 1=homogeneity
+homo <- 1			 				# 1=homogeneity
 
 #---------------------
 # Simulation Design factors
 #---------------------
-gsize <- c(1, 2, 3) 					# 1=equal/balanced group size, 2=G1,50%, 3=G1,66.67%
-startN <- c(60,90,120,180,300,500)			# sample sizes
+gsize <- c(1, 2, 3) 						# 1=equal/balanced group size, 2=G1,50%, 3=G1,66.67%
+startN <- c(60,90,120,180,300,500)				# sample sizes
 # all possible senarios
 Tree_senario <- expand.grid(N = startN, GroupN = gsize)
 
 nrep <- 1000							# num. of replications
 
 #---------------------
-# Results Save
+# Save the results
 #---------------------
 Result <- vector("list", nrow(Tree_senario))
 names(Result) <- paste("Tree_senario", 1:nrow(Tree_senario), sep="")
 
+#---------------------
+# Simulation starts here
+#---------------------
 for (sn in 1:nrow(Tree_senario)) {
 
 	startN <- Tree_senario[sn,"N"]
@@ -102,7 +105,15 @@ for (sn in 1:nrow(Tree_senario)) {
 
 }
 
-# Compute measures
+#---------------------
+# If you'd like to save the results in .RData
+#---------------------
+save(list = ls(all.names = TRUE), file = "AlphaSimulation.RData", envir = .GlobalEnv)
+
+#---------------------
+# Compute the performance measures
+#---------------------
+
 comp <- Result
 
 saveM <- matrix(,nrow=nrow(Tree_senario), ncol=3, dimnames=list(NULL,c("whichZ","howmany","Alpha")))
@@ -121,6 +132,5 @@ for (i in 1:nrow(saveM)){
 
 }
 
-# Save results:
-save(list = ls(all.names = TRUE), file = "AlphaSimulation.RData", envir = .GlobalEnv)
+
 
