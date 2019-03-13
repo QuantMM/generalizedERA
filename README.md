@@ -3,12 +3,14 @@ Generalized Extended Redundancy Analysis (gERA) in R
 
 Here we provide some basic R functions to implement generalized extended redundancy analysis (gERA)!
 
-About gERA
+About ERA
 ----------
 
 Extended redundancy analysis (ERA) is a statistical method for relating multiple sets of predictors to response variables. This method aims to extract a weighted composite or component from each set of predictors in such a way that it explains the maximum variation of response variables. Thus, ERA performs linear regression and data reduction simultaneously, providing a simpler description of directional relationships among many sets of variables.
 
 ![An ERA model example](https://github.com/generalizedERA/generalizedERA/blob/master/ERAexample.JPG)
+
+The above figure displays an example of the ERA model, where a response variable is influenced by two components, each of which is associated with four observed predictor variables. As alluded from the figure.
 
 Generalized ERA (gERA) is a flexible generalization of ordinary ERA! gERA handles various types of response variables (e.g., continuous, binary, or count) that are assumed to follow an exponential family distribution.
 
