@@ -10,7 +10,7 @@ Extended redundancy analysis (ERA) is a statistical method for relating multiple
 
 ![An ERA model example](https://github.com/generalizedERA/generalizedERA/blob/master/ERAexample.JPG)
 
-The above figure displays an example of the ERA model, where a response variable is influenced by two components, each of which is associated with four observed predictor variables. As alluded from the figure.
+The above figure displays an example of the ERA model, where a response variable is influenced by two components, each of which is associated with four observed predictor variables.
 
 Generalized ERA (gERA) is a flexible generalization of ordinary ERA! gERA handles various types of response variables (e.g., continuous, binary, or count) that are assumed to follow an exponential family distribution.
 
