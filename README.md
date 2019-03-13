@@ -34,7 +34,7 @@ Getting Started
 -------
 
 - Go and check 'gERA.r' file: This shows 1) how to generate an example toy data and 2) how to implement ERA with the data generated.
-- If you are interested in the technical details on the parameter estimation procedures in gERA, go check 'RunGERA.r' file! 
+- If you are interested in the technical details on the parameter estimation procedures in gERA, go check 'fitERA.r' file! 
 
 
 References
