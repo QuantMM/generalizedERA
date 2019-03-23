@@ -1,5 +1,5 @@
 library(partykit);library(strucchange);library(sandwich);library(mvtnorm)
-source("C:/Users/SUNMEE/Downloads/MBR Revision/ERAfunction_simulation.r")
+source("ERAfunction_simulation.r")
 
 #---------------------
 # Random ERA data generate: Becker, Rai, & Rigdon (2013)
